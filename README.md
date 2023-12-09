@@ -3,4 +3,6 @@ This is a guestbook application for the Central Statistics Agency of Indragiri H
 
 **Screenshort Application**
 --
-![Alt Text](https://github.com/roryrinaldo/WeatherApp_Dicoding/blob/main/Screenshot%202023-10-18%20130223.png)
+![Alt Text](https://github.com/roryrinaldo/GuestBook_PBS/blob/main/Screenshot%202023-12-09%20131517.png)
+
+![Alt Text](https://github.com/roryrinaldo/GuestBook_PBS/blob/main/Screenshot%202023-12-09%20131534.png)
