@@ -17,7 +17,28 @@
     <!-- CSS Files -->
     <link id="pagestyle" href="{{ asset('assets/css/argon-dashboard.css?v=2.0.4') }}" rel="stylesheet" />
     <link href="/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
-  
+    <style>
+        .rating {
+            display: flex;
+            flex-direction: row-reverse;
+        }
+
+        .rating input {
+            display: none;
+        }
+        
+        .rating label {
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            background-image: url('images/star-icon.png');
+            background-size: cover;
+        }
+
+        .rating input:checked ~ label {
+            background-image:  url('images/star-icon-filled.png');
+        }
+    </style>
 </head>
 <body class="g-sidenav-show bg-gray-100">
     <div class="min-height-300 bg-primary position-absolute w-100"></div>
@@ -38,6 +59,14 @@
                     <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="{{ url('user/visitor') }}">
+                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="ni ni-book-bookmark text-primary text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Data Pengunjung</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -202,7 +231,7 @@
     <script src="{{ asset('assets/js/argon-dashboard.min.js?v=2.0.4') }}"></script>
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
+    
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

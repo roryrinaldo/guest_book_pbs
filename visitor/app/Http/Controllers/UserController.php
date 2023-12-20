@@ -10,12 +10,26 @@ use Illuminate\Http\RedirectResponse;
 use App\Models\Visitor;
 use App\Models\User;
 
+use Illuminate\Support\Facades\DB;
+
 class UserController extends Controller
 {
     public function dashboard(): View
     {    
+        // Mengumpulkan data jumlah pengunjung per bulan
+        $monthlyVisitors = Visitor::select(DB::raw("DATE_FORMAT(tanggal_kunjungan, '%Y-%m') as month"), DB::raw('count(*) as total'))
+        ->groupBy('month')
+        ->orderBy('month', 'asc')
+        ->get();
+
+        return view('user.dashboard', compact('monthlyVisitors'));
+        
+    }
+
+    public function visitor(): View
+    {    
         $visitors = Visitor::paginate(10);
-        return view('user.dashboard', ['visitors' => $visitors]);
+        return view('user.visitor', ['visitors' => $visitors]);
     }
 
     public function create(): View

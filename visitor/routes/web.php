@@ -28,6 +28,8 @@ Route::prefix('user')->group(function() {
         Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
         Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+
+        Route::get('/visitor', [UserController::class, 'visitor'])->name('visitor');
         Route::get('/createVisitor', [UserController::class, 'create'])->name('createVisitor');
         Route::post('/storeVisitor', [UserController::class, 'store'])->name('storeVisitor');
         Route::get('/editVisitor/{id}', [UserController::class, 'edit'])->name('editVisitor');

@@ -74,36 +74,25 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="rating" class="form-control-label">Rating</label>
-                                    <div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" id="rating1" name="rating" value="1">
-                                            <label class="custom-control-label" for="rating1">1</label>
-                                        </div>
-                                        <div class="form-check form-check-inline" >
-                                            <input class="form-check-input" type="radio" id="rating2" name="rating" value="2">
-                                            <label class="custom-control-label" for="rating2">2</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" id="rating3" name="rating" value="3">
-                                            <label class="custom-control-label" for="rating3">3</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" id="rating3" name="rating" value="4">
-                                            <label class="custom-control-label" for="rating4">4</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" id="rating5" name="rating" value="5">
-                                            <label class="custom-control-label" for="rating5">5</label>
-                                        </div>
-                                        
+                                    <label for="rating">Rating:</label>
+                                    <div id="ratingStars" class="rating">
+                                        <input type="radio" id="star5" name="rating" value="5" />
+                                        <label for="star5"></label>
+                                        <input type="radio" id="star4" name="rating" value="4" />
+                                        <label for="star4"></label>
+                                        <input type="radio" id="star3" name="rating" value="3" checked />
+                                        <label for="star3"></label>
+                                        <input type="radio" id="star2" name="rating" value="2" />
+                                        <label for="star2"></label>
+                                        <input type="radio" id="star1" name="rating" value="1" />
+                                        <label for="star1"></label>
                                     </div>
+                                </div>
                             </div>
-                       
                         </div>
                         <div class="mt-3">
                             <button type="submit" class="btn btn-primary">Tambah</button>
-                            <a href="{{ route('dashboard') }}" class="btn btn-secondary">Kembali</a>
+                            <a href="{{ route('visitor') }}" class="btn btn-secondary">Kembali</a>
                         </div>
                     </form>
                 </div>
@@ -112,4 +101,18 @@
     </div>
     <!-- ... (footer section) ... -->
 </div>
+
+<script>
+
+    // Mendengarkan perubahan nilai pada bintang rating
+    document.querySelectorAll('.rating input').forEach(function (star) {
+        star.addEventListener('change', function () {
+            // Menangkap nilai bintang yang dipilih
+            var rating = this.value;
+
+            // Lakukan sesuatu dengan nilai rating, misalnya tampilkan di console
+            console.log('Rating:', rating);
+        });
+    });
+</script>
 @endsection

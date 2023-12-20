@@ -75,36 +75,18 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="rating" class="form-control-label">Rating</label>
-                                    <!-- Add a hidden input for rating -->
-                                    <input type="hidden" name="rating" id="selectedRating" value="{{ $visitor->rating }}">
 
-                                    <div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" id="rating1" name="rating" value="1" {{ $visitor->rating == 1 ? 'checked' : '' }}>
-                                            <label class="custom-control-label" for="rating1">1</label>
-                                        </div>
-                                        <div class="form-check form-check-inline" >
-                                            <input class="form-check-input" type="radio" id="rating2" name="rating" value="2" {{ $visitor->rating == 2 ? 'checked' : '' }}>
-                                            <label class="custom-control-label" for="rating2">2</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" id="rating3" name="rating" value="3" {{ $visitor->rating == 3 ? 'checked' : '' }}>
-                                            <label class="custom-control-label" for="rating3">3</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" id="rating3" name="rating" value="4" {{ $visitor->rating == 4 ? 'checked' : '' }}>
-                                            <label class="custom-control-label" for="rating4">4</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" id="rating5" name="rating" value="5" {{ $visitor->rating == 5 ? 'checked' : '' }}>
-                                            <label class="custom-control-label" for="rating5">5</label>
-                                        </div>
-                                        
+                                    <div class="rating">
+                                        @for ($i = 5; $i >= 1; $i--)
+                                            <input type="radio" id="rating{{ $i }}" name="rating" value="{{ $i }}" {{ $visitor->rating == $i ? 'checked' : '' }}>
+                                            <label for="rating{{ $i }}" class="star" title="{{ $i }} stars"></label>
+                                        @endfor
                                     </div>
+                                </div>
                             </div>
                             <div class="mt-3">
                                 <button type="submit" class="btn btn-primary">Simpan</button>
-                                <a href="{{ route('dashboard') }}" class="btn btn-secondary">Kembali</a>
+                                <a href="{{ route('visitor') }}" class="btn btn-secondary">Kembali</a>
                             </div>
                         </div>
                     </form>
@@ -116,14 +98,14 @@
 </div>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const ratingInputs = document.querySelectorAll('input[name="rating"]');
-        const selectedRatingInput = document.getElementById('selectedRating');
+     // Mendengarkan perubahan nilai pada bintang rating
+     document.querySelectorAll('.rating input').forEach(function (star) {
+        star.addEventListener('change', function () {
+            // Menangkap nilai bintang yang dipilih
+            var rating = this.value;
 
-        ratingInputs.forEach(function (ratingInput) {
-            ratingInput.addEventListener('change', function () {
-                selectedRatingInput.value = this.value;
-            });
+            // Lakukan sesuatu dengan nilai rating, misalnya tampilkan di console
+            console.log('Rating:', rating);
         });
     });
 </script>
